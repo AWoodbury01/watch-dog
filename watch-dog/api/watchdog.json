@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Rusty Ryan",
+      "email": "hotelman@aol.com",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "name": "Basher Tarr",
+      "email": "hotelman@aol.com",
+      "password": "123"
+    }
+  ],
+  "watchList": [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "Ocean's 11",
+      "watched": false
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "title": "Ocean's 12",
+      "watched": false
+    }
+  ]
+}
