@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 
 class ApplicationViews extends Component {
-  isAuthenticated = () => localStorage.getItem("credentials") !== null;
+//   isAuthenticated = () => localStorage.getItem("credentials") !== null;
   render() {
     return (
       <React.Fragment>

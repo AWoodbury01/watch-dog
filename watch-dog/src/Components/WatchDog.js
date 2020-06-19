@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-// import NavBar from './nav/NavBar'
+import Navbar from './nav/Navbar'
 import ApplicationViews from './ApplicationViews'
+
 
 
 class WatchDog extends Component {
@@ -11,8 +12,7 @@ class WatchDog extends Component {
     render(){
         return(
             <React.Fragment>
-                
-                <NavBar />
+                <Navbar />
                 <ApplicationViews />
                
             </React.Fragment>

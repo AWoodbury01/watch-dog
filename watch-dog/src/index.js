@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import WatchDog from '../src/Components/WatchDog';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter as Router } from 'react-router-dom';
+import 'semantic-ui-css/semantic.min.css';
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Router>
     <WatchDog />
-  </React.StrictMode>,
+  </Router>,
   document.getElementById('root')
 );
 
