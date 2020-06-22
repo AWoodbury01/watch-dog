@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Menu, Label, Icon } from "semantic-ui-react";
+import { Input, Menu } from "semantic-ui-react";
 import NavbarDrop from "./NavbarDrop";
 
 export default class Navbar extends Component {
@@ -34,7 +34,8 @@ export default class Navbar extends Component {
           <Menu.Item>
             <Input icon="search" placeholder="Search..." />
           </Menu.Item>
-          <Menu.Item>
+
+          {/* <Menu.Item>
             <Label
               as="a"
               name="Profile"
@@ -46,17 +47,18 @@ export default class Navbar extends Component {
           <Icon name="user" />
               User
             </Label>
-          </Menu.Item>
+          </Menu.Item> */}
 
         {/* Navbar drop test */}
-
-          
-
-          <Menu.Item
+        <Menu.Item>
+          <NavbarDrop />
+        </Menu.Item>
+        {/* Navbar drop test */}
+        {/* <Menu.Item
             name="logout"
             active={activeItem === "logout"}
             onClick={this.handleItemClick}
-          />
+          /> */}
         </Menu.Menu>
       </Menu>
     );

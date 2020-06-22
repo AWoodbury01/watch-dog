@@ -1,22 +1,27 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
 import { Button, Dropdown } from 'semantic-ui-react'
+import ProfilePage from "../profile/ProfilePage"
+
 
 const options = [
-  { key: 'edit', icon: 'edit', text: 'Edit Post', value: 'edit' },
-  { key: 'delete', icon: 'delete', text: 'Remove Post', value: 'delete' },
-  { key: 'hide', icon: 'hide', text: 'Hide Post', value: 'hide' },
+  { key: 'edit', icon: 'user circle', text: 'My Account', value: 'edit', onClick:() =>         <Route exact path="/profile" render={(props) => {
+    return <ProfilePage {...props} />;
+  }} />
+},
+  { key: 'hide', icon: 'log out', text: 'Logout', value: 'hide', onClick: () => console.log("You clicked the log out button") },
 ]
 
-const DropdownExampleFloating = () => (
+const profileDropdown = () => (
   <Button.Group color='teal'>
-    <Button>Save</Button>
+    <Button>User Name</Button>
     <Dropdown
       className='button icon'
       floating
       options={options}
-      trigger={<React.Fragment />}
+      trigger={<></>}
     />
   </Button.Group>
 )
 
-export default DropdownExampleFloating
+export default profileDropdown
