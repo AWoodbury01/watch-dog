@@ -25,6 +25,13 @@
       "userId": 1,
       "title": "Ocean's 12",
       "watched": false
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "title": "Ocean's 12",
+      "watched": false
     }
+
   ]
 }

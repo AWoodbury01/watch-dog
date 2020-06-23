@@ -1,0 +1,12 @@
+.watchlist-container {
+    display: flex;
+    /* height: 31rem; */
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 1rem;
+}
+
+.profile-header-container {
+    display: flex;
+    justify-content: center;
+}
