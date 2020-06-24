@@ -10,12 +10,12 @@ class MoviesList extends Component {
   };
 
   componentDidMount() {
-    ContentManager.getAll().then((movies) => {
+    ContentManager.getAllMovies("prestige").then((movies) => {
       
       console.log(movies)
       
       this.setState({
-        movies: movies,
+        movies: movies.results,
       });
     });
   }
@@ -33,17 +33,17 @@ class MoviesList extends Component {
 
         <Divider />
 
-        {/* <Card.Group className="watchlist-container">
-            {this.state.movies.results.locations.map(content => {
+        <Card.Group className="watchlist-container">
+            {this.state.movies.map((content) => {
               return (
                 <MovieCard
                   key={content.id}
-                  movies={content}
+                  movie={content}
                   {...this.props}
                 />
               )
             })}
-        </Card.Group> */}
+        </Card.Group>
       </>
     )
   }
