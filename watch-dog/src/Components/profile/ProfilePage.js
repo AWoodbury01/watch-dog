@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Header, Icon, Container, Card, Divider } from "semantic-ui-react";
+import { Header, Icon, Card, Divider } from "semantic-ui-react";
 import WatchCard from "../watchlist/WatchCard";
 import ContentManager from "../../modules/ContentManager";
 import "./Profile.css";
-import SectionDivider from "../ui/UIElements"
 
 class ProfilePage extends Component {
   state = {
@@ -21,7 +20,7 @@ class ProfilePage extends Component {
   render() {
     return (
       <>
-        <div className="profile-header-container">
+        <div className="header-container">
           <Header as="h2" icon>
             <Icon name="user" />
             My Profile
