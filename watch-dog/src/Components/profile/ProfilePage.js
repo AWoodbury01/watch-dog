@@ -9,6 +9,16 @@ class ProfilePage extends Component {
     watchlist: [],
   };
 
+  deleteWatchListItem = (id) => {
+    ContentManager.deleteWatchListItem(id).then(() => {
+      ContentManager.getAllWatchList().then((newWatchlist) => {
+        this.setState({
+          watchlist: newWatchlist,
+        })
+      })
+    })
+  }
+
   componentDidMount() {
     ContentManager.getAllWatchList().then((watchListItems) => {
       this.setState({
@@ -38,6 +48,7 @@ class ProfilePage extends Component {
                 <WatchCard
                   key={content.id}
                   watchlist={content}
+                  deleteWatch={this.deleteWatchListItem}
                   {...this.props}
                 />
               );

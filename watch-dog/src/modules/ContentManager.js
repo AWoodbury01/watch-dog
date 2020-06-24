@@ -9,6 +9,12 @@ export default {
   getAllWatchList() {
     return fetch(`${remoteURL}/watchList`).then((result) => result.json());
   },
+  deleteWatchListItem(id) {
+    return fetch(`${remoteURL}/watchList/${id}`, {
+      method: "DELETE",
+    }).then((result) => result.json());
+  },
+
   getAll() {
     return fetch(`${externalURL}/lookup?term=bojack`, {
       method: "GET",
@@ -38,6 +44,5 @@ export default {
         "x-rapidapi-key": `${API_KEY}`,
       },
     }).then((result) => result.json());
-  }
-
+  },
 };
