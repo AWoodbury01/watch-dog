@@ -9,8 +9,19 @@ class MoviesList extends Component {
     movies: [],
   };
 
+  // componentDidMount() {
+  //   ContentManager.getAllMovies("ocean's").then((movies) => {
+      
+  //     console.log(movies)
+      
+  //     this.setState({
+  //       movies: movies.results,
+  //     });
+  //   });
+  // }
+
   componentDidMount() {
-    ContentManager.getAllMovies("prestige").then((movies) => {
+    ContentManager.getAllProviders("tt3398228","imdb").then((movies) => {
       
       console.log(movies)
       
@@ -19,6 +30,7 @@ class MoviesList extends Component {
       });
     });
   }
+
 
 
   render() {

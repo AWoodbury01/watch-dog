@@ -29,4 +29,15 @@ export default {
       },
     }).then((result) => result.json());
   },
+  getAllProviders(id, provider) {
+    return fetch(`${externalURL}/lookup?source_id=${id}&source=${provider}`, {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host":
+          "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
+        "x-rapidapi-key": `${API_KEY}`,
+      },
+    }).then((result) => result.json());
+  }
+
 };
