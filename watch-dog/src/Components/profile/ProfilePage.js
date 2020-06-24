@@ -32,7 +32,7 @@ class ProfilePage extends Component {
 
       
 
-        <Card.Group className="watchlist-container" itemsPerRow={20}>
+        <Card.Group className="watchlist-container">
             {this.state.watchlist.map((content) => {
               return (
                 <WatchCard
