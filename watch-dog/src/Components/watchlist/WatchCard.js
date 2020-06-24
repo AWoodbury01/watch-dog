@@ -14,7 +14,7 @@ class WatchCard extends Component {
         <Card.Content>
           <Card.Header>{this.props.watchlist.title}</Card.Header>
           <Card.Description>
-            Matthew is a musician living in Nashville.
+            My Review: 
           </Card.Description>
         </Card.Content>
         <Card.Content extra>

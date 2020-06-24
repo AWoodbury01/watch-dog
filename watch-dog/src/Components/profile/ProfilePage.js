@@ -7,6 +7,7 @@ import "./Profile.css";
 class ProfilePage extends Component {
   state = {
     watchlist: [],
+    editID: "",
   };
 
   deleteWatchListItem = (id) => {
@@ -34,13 +35,17 @@ class ProfilePage extends Component {
           <Header as="h2" icon>
             <Icon name="user" />
             My Profile
-            <Header.Subheader>Manage your profile</Header.Subheader>
+            <Header.Subheader>Manage your Watch List</Header.Subheader>
           </Header>
         </div>
 
       <Divider />
 
-      
+      <div>
+      <Header as="h3">
+        Watch List
+      </Header>
+      </div>
 
         <Card.Group className="watchlist-container">
             {this.state.watchlist.map((content) => {
@@ -54,6 +59,13 @@ class ProfilePage extends Component {
               );
             })}
         </Card.Group>
+
+        <div>
+      <Header as="h3">
+        Watched List
+      </Header>
+      </div>
+
       </>
     );
   }
