@@ -7,7 +7,18 @@ import "./Profile.css";
 class ProfilePage extends Component {
   state = {
     watchlist: [],
+    editID: "",
   };
+
+  deleteWatchListItem = (id) => {
+    ContentManager.deleteWatchListItem(id).then(() => {
+      ContentManager.getAllWatchList().then((newWatchlist) => {
+        this.setState({
+          watchlist: newWatchlist,
+        })
+      })
+    })
+  }
 
   componentDidMount() {
     ContentManager.getAllWatchList().then((watchListItems) => {
@@ -24,13 +35,17 @@ class ProfilePage extends Component {
           <Header as="h2" icon>
             <Icon name="user" />
             My Profile
-            <Header.Subheader>Manage your profile</Header.Subheader>
+            <Header.Subheader>Manage your Watch List</Header.Subheader>
           </Header>
         </div>
 
       <Divider />
 
-      
+      <div>
+      <Header as="h3">
+        Watch List
+      </Header>
+      </div>
 
         <Card.Group className="watchlist-container">
             {this.state.watchlist.map((content) => {
@@ -38,11 +53,19 @@ class ProfilePage extends Component {
                 <WatchCard
                   key={content.id}
                   watchlist={content}
+                  deleteWatch={this.deleteWatchListItem}
                   {...this.props}
                 />
               );
             })}
         </Card.Group>
+
+        <div>
+      <Header as="h3">
+        Watched List
+      </Header>
+      </div>
+
       </>
     );
   }
