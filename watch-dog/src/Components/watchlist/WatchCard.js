@@ -39,10 +39,10 @@ class WatchCard extends Component {
             </Button.Content>
           </Button>
           </Button.Group>
-          <Checkbox toggle 
+          <Checkbox slider 
+          checked={this.props.watchlist.watched === true ? true : false}
           label="Watched"
           id={this.props.watchlist.id}
-          // onChange={this.props.toggle}
           onClick={() => 
           this.props.watchlist.watched === true ? (this.props.falseWatch(this.props.watchlist.id)) 
           :
