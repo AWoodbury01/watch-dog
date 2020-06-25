@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Icon, Image, Button } from "semantic-ui-react";
+import { Card, Icon, Image, Button, Checkbox } from "semantic-ui-react";
 import "../profile/Profile.css";
 
 class WatchCard extends Component {
@@ -18,7 +18,11 @@ class WatchCard extends Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Button animated="vertical">
+          <Button.Group>
+          <Button 
+          animated="vertical"
+          color="teal"
+          >
             <Button.Content hidden>Edit</Button.Content>
             <Button.Content visible>
               <Icon name="edit outline" />
@@ -26,6 +30,7 @@ class WatchCard extends Component {
           </Button>
           <Button 
           animated="vertical"
+          color="red"
           onClick={() => this.props.deleteWatch(this.props.watchlist.id)}
           >
             <Button.Content hidden>Delete</Button.Content>
@@ -33,6 +38,17 @@ class WatchCard extends Component {
               <Icon name="trash alternate outline" />
             </Button.Content>
           </Button>
+          </Button.Group>
+          <Checkbox toggle 
+          label="Watched"
+          id={this.props.watchlist.id}
+          // onChange={this.props.toggle}
+          onClick={() => 
+          this.props.watchlist.watched === true ? (this.props.falseWatch(this.props.watchlist.id)) 
+          :
+          (this.props.trueWatch(this.props.watchlist.id))
+          }
+          />
         </Card.Content>
       </Card>
     );
