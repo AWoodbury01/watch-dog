@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import UserRegistration from "../../modules/UserRegistration";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Header, Icon, Input } from "semantic-ui-react";
+import "./Login.css";
+import "../profile/Profile.css";
 
 class UserForm extends Component {
   state = {
@@ -62,42 +64,52 @@ class UserForm extends Component {
   render() {
     return (
       <>
-        <h1>Account Registration</h1>
-        <Form>
-          <Form.Field>
-            <input
-              type="text"
-              placeholder="Name"
-              onChange={this.handleFieldChange}
-              id="name"
-            />
-          </Form.Field>
-          <Form.Field>
-            <input
-              type="text"
-              placeholder="Email"
-              onChange={this.handleFieldChange}
-              id="email"
-            />
-          </Form.Field>
-          <Form.Field>
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={this.handleFieldChange}
-              id="password"
-            />
-          </Form.Field>
-
-          <Button
-            variant="primary"
-            type="button"
+        <div className="header-container">
+          <Header as="h2" icon>
+            <Icon name="user circle outline" />
+            Create New Account
+          </Header>
+        </div>
+        <div className="center">
+          <Form>
+            <Form.Field>
+              <Input
+                type="text"
+                placeholder="Name"
+                onChange={this.handleFieldChange}
+                id="name"
+              />
+            </Form.Field>
+            <Form.Field>
+              <Input
+                type="text"
+                placeholder="Email"
+                onChange={this.handleFieldChange}
+                id="email"
+              />
+            </Form.Field>
+            <Form.Field>
+              <Input
+                type="password"
+                placeholder="Password"
+                onChange={this.handleFieldChange}
+                id="password"
+              />
+            </Form.Field>
+            <Button
+              variant="primary"
+              type="button"
+              disabled={this.state.loadingStatus}
+              onClick={this.constructNewUser}
+            >Submit
+            </Button>
+            <Button 
+            href="/"
             disabled={this.state.loadingStatus}
-            onClick={this.constructNewUser}
-          >
-            Submit
-          </Button>
-        </Form>
+            >Cancel
+            </Button>
+          </Form>
+        </div>
       </>
     );
   }

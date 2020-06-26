@@ -1,5 +1,5 @@
 div.login-form{
-    width: 40%
+    width: 20%
 }
 
 h2.login-heading{
@@ -8,7 +8,7 @@ h2.login-heading{
 }
 
 .center {
-    margin: o;
+    margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;

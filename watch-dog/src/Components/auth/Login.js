@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Form, Container, Button } from "semantic-ui-react";
+import { Form, Container, Button, Input } from "semantic-ui-react";
 import LoginManager from "../../modules/LoginManager";
-import { Link } from "react-router-dom";
 import "./Login.css";
 
 class Login extends Component {
@@ -64,32 +63,34 @@ class Login extends Component {
           </h2>
           <Form onSubmit={this.handleLogin}>
             <Form.Field>
-              <label>Email address</label>
-              <input
+              <Input
+                size="small"
                 type="email"
                 id="email"
+                iconPosition="left"
+                icon="mail"
                 onChange={this.handleFieldChange}
                 placeholder="Enter email"
                 required=""
               />
             </Form.Field>
             <Form.Field>
-              <label>Password</label>
-              <input
+              <Input
+                size="small"
                 type="password"
                 id="password"
+                iconPosition="left"
+                icon="circle"
                 onChange={this.handleFieldChange}
                 placeholder="Password"
                 required=""
               />
             </Form.Field>
-            <div className="button-row">
-              <Button 
-              type="submit"
-              >
-                  Log In </Button>
-            </div>
-            <Link to={`/register-account`}>Register An Account?</Link>
+            <Button type="submit">Log In </Button>
+            <Button 
+            href="/register-account"
+            >Create New Account 
+            </Button>
           </Form>
         </Container>
       </>
