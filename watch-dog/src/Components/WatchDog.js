@@ -1,23 +1,22 @@
-import React, {Component} from 'react'
-import Navbar from './nav/Navbar'
-import ApplicationViews from './ApplicationViews'
-
-
+import React, { Component } from "react";
+import Navbar from "./nav/Navbar";
+import ApplicationViews from "./ApplicationViews";
 
 class WatchDog extends Component {
-    state = {
-        heading: true,
-      };
+  state = {
+    heading: true,
+  };
 
-    render(){
-        return(
-            <React.Fragment>
-                <Navbar />
-                <ApplicationViews />
-               
-            </React.Fragment>
-        )
-    }
+  isAuthenticated = () => localStorage.getItem("credentials") !== null;
+
+  render() {
+    return (
+      <>
+        <Navbar />
+        <ApplicationViews />
+      </>
+    );
+  }
 }
 
-export default WatchDog
+export default WatchDog;

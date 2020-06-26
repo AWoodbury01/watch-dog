@@ -11,6 +11,12 @@
       "name": "Basher",
       "email": "tossers@aol.com",
       "password": "123"
+    },
+    {
+      "name": "Danny",
+      "email": "casino@gmail.com",
+      "password": "123",
+      "id": 3
     }
   ],
   "watchList": [
@@ -36,7 +42,7 @@
       "id": 4,
       "userId": 2,
       "title": "Alien",
-      "watched": false
+      "watched": true
     },
     {
       "id": 5,
@@ -48,7 +54,7 @@
       "id": 6,
       "userId": 2,
       "title": "Alien 3",
-      "watched": true
+      "watched": false
     }
   ]
 }

@@ -4,13 +4,21 @@ import MoviesList from "./movies/MoviesList";
 import ShowsList from "./shows/ShowsList";
 import ProfilePage from "./profile/ProfilePage";
 import Login from "../Components/auth/Login";
-import Home from "../Components/home/Home"
+import Home from "../Components/home/Home";
+import UserForm from "../Components/auth/UserForm";
 
 class ApplicationViews extends Component {
   isAuthenticated = () => localStorage.getItem("credentials") !== null;
   render() {
     return (
       <React.Fragment>
+        <Route
+          exact
+          path="/register-account"
+          render={(props) => {
+            return <UserForm {...props} />;
+          }}
+        />
         <Route
           exact
           path="/movies"

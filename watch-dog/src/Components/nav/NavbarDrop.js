@@ -22,7 +22,7 @@ const options = [
 
 const profileDropdown = () => (
   <Button.Group color="teal">
-    <Button>{localStorage.getItem("userName")}</Button>
+    <Button>{localStorage.getItem("name")}</Button>
     <Dropdown
       className="button icon"
       floating
