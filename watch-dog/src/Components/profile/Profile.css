@@ -1,6 +1,6 @@
 .watchlist-container {
     display: flex;
-    height: 31rem;
+    height: 32rem;
     flex-direction: row;
     /* justify-content: flex-start; */
     margin-left: 1rem;
@@ -17,3 +17,8 @@
     justify-content: center;
 }
 
+.watchlist-header {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+}

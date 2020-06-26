@@ -8,7 +8,31 @@ class ProfilePage extends Component {
   state = {
     watchlist: [],
     editID: "",
+    checked: false
   };
+
+  toggle = () => this.setState((prevState) => ({ checked: !prevState.checked }))
+
+  trueWatch = (id) => {
+    ContentManager.truePatch(id).then(() => {
+      ContentManager.getAllWatchList().then((newWatchlist) => {
+        this.setState({
+          watchlist: newWatchlist,
+        })
+      })
+    })
+  }
+
+  falseWatch = (id) => {
+    ContentManager.falsePatch(id).then(() => {
+      ContentManager.getAllWatchList().then((newWatchlist) => {
+        this.setState({
+          watchlist: newWatchlist,
+        })
+      })
+    })
+  }
+
 
   deleteWatchListItem = (id) => {
     ContentManager.deleteWatchListItem(id).then(() => {
@@ -42,28 +66,57 @@ class ProfilePage extends Component {
       <Divider />
 
       <div>
-      <Header as="h3">
+      <Header as="h2" className="watchlist-header">
         Watch List
       </Header>
       </div>
 
+      <div>
         <Card.Group className="watchlist-container">
-            {this.state.watchlist.map((content) => {
-              return (
+            {this.state.watchlist.map((content) => 
+            content.watched === false ? (
+              
                 <WatchCard
                   key={content.id}
                   watchlist={content}
                   deleteWatch={this.deleteWatchListItem}
-                  {...this.props}
+                  trueWatch={this.trueWatch}
+                  falseWatch={this.falseWatch}
+                  onChange={this.toggle}
+                  checked={this.state.checked}
+                          {...this.props}
                 />
-              );
-            })}
+              
+            ) : ("")
+            )}
         </Card.Group>
+        </div>
+
+        <Divider />
 
         <div>
-      <Header as="h3">
+      <Header as="h2" className="watchlist-header">
         Watched List
       </Header>
+      </div>
+
+      <div>
+        <Card.Group>
+          {this.state.watchlist.map(content => 
+            content.watched === true ? (
+              <WatchCard
+              key={content.id}
+              watchlist={content}
+              deleteWatch={this.deleteWatchListItem}
+              trueWatch={this.trueWatch}
+              falseWatch={this.falseWatch}
+              onChange={this.toggle}
+              checked={this.state.checked}
+                  {...this.props}
+              />
+              ) : ("")
+            )}
+        </Card.Group>
       </div>
 
       </>

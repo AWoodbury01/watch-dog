@@ -14,6 +14,24 @@ export default {
       method: "DELETE",
     }).then((result) => result.json());
   },
+  truePatch(id) {
+    return fetch(`${remoteURL}/watchList/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify({ watched: true }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    }).then((result) => result.json());
+  },
+  falsePatch(id) {
+    return fetch(`${remoteURL}/watchList/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify({ watched: false }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    }).then((result) => result.json());
+  },
 
   getAll() {
     return fetch(`${externalURL}/lookup?term=bojack`, {
