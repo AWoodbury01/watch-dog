@@ -7,7 +7,7 @@ const remoteURL = "http://localhost:5002";
 
 export default {
   getAllWatchList() {
-    return fetch(`${remoteURL}/watchList`).then((result) => result.json());
+    return fetch(`${remoteURL}/watchList?userId=${localStorage.getItem("userId")}`).then((result) => result.json());
   },
   deleteWatchListItem(id) {
     return fetch(`${remoteURL}/watchList/${id}`, {

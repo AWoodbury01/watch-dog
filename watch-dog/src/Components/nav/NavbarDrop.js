@@ -1,7 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
 import { Button, Dropdown } from "semantic-ui-react";
-import ProfilePage from "../profile/ProfilePage";
 
 const options = [
   {
@@ -17,13 +15,14 @@ const options = [
     icon: "log out",
     text: "Logout",
     value: "hide",
-    onClick: () => console.log("logout button"),
+    href: "/",
+    onClick: ()=> localStorage.clear()
   }
 ];
 
 const profileDropdown = () => (
   <Button.Group color="teal">
-    <Button>User Name</Button>
+    <Button>{localStorage.getItem("name")}</Button>
     <Dropdown
       className="button icon"
       floating
