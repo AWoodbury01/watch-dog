@@ -43,7 +43,7 @@ export default {
       },
     }).then((result) => result.json());
   },
-  getAllMovies(id) {
+  getAllContent(id) {
     return fetch(`${externalURL}/lookup?term=${id}`, {
       method: "GET",
       headers: {
@@ -52,6 +52,16 @@ export default {
         "x-rapidapi-key": `${API_KEY}`,
       },
     }).then((result) => result.json());
+  },
+  getAllSearch() {
+    return fetch(`${externalURL}/lookup?term=${this.state.query}`, {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host":
+          "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
+        "x-rapidapi-key": `${API_KEY}`,
+      },
+    }).then((result) => result.json())
   },
   getAllProviders(id, provider) {
     return fetch(`${externalURL}/lookup?source_id=${id}&source=${provider}`, {
