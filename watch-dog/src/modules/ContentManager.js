@@ -74,3 +74,4 @@ export default {
     }).then((result) => result.json());
   },
 };
+
