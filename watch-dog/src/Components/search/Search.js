@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form } from "semantic-ui-react";
+import { Form, Modal, Image, Header, Button } from "semantic-ui-react";
 import ContentManager from "../../modules/ContentManager";
 import Suggestions from "../search/Suggestions";
 import axios from "axios";
@@ -72,18 +72,24 @@ class Search extends Component {
   render() {
     return (
       <>
-      <Form>
-        <input
-          placeholder="Search ..."
-          ref={(input) => (this.search = input)}
-          onChange={this.handleInputChange}
-        />
-      </Form>
-              {this.state.query === "" ? (
-                ""
-              ) : (
-                <Suggestions results={this.state.results} />
-              )}
+        <Form>
+          <input
+            placeholder="Search ..."
+            ref={(input) => (this.search = input)}
+            onChange={this.handleInputChange}
+          />
+        </Form>
+        {this.state.query === "" ? (
+          ""
+        ) : (
+          <Modal trigger={<Button>Search</Button>}>
+            <Modal.Header>Select a Photo</Modal.Header>
+            <Modal.Content>
+              {this.state.results.map(r => (
+              <li key={r.id}>{r.name}</li>))}
+            </Modal.Content>
+          </Modal>
+        )}
       </>
     );
   }
