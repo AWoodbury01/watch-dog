@@ -8,41 +8,41 @@ class ProfilePage extends Component {
   state = {
     watchlist: [],
     editID: "",
-    checked: false
+    checked: false,
   };
 
-  toggle = () => this.setState((prevState) => ({ checked: !prevState.checked }))
+  toggle = () =>
+    this.setState((prevState) => ({ checked: !prevState.checked }));
 
   trueWatch = (id) => {
     ContentManager.truePatch(id).then(() => {
       ContentManager.getAllWatchList().then((newWatchlist) => {
         this.setState({
           watchlist: newWatchlist,
-        })
-      })
-    })
-  }
+        });
+      });
+    });
+  };
 
   falseWatch = (id) => {
     ContentManager.falsePatch(id).then(() => {
       ContentManager.getAllWatchList().then((newWatchlist) => {
         this.setState({
           watchlist: newWatchlist,
-        })
-      })
-    })
-  }
-
+        });
+      });
+    });
+  };
 
   deleteWatchListItem = (id) => {
     ContentManager.deleteWatchListItem(id).then(() => {
       ContentManager.getAllWatchList().then((newWatchlist) => {
         this.setState({
           watchlist: newWatchlist,
-        })
-      })
-    })
-  }
+        });
+      });
+    });
+  };
 
   componentDidMount() {
     ContentManager.getAllWatchList().then((watchListItems) => {
@@ -63,19 +63,18 @@ class ProfilePage extends Component {
           </Header>
         </div>
 
-      <Divider />
+        <Divider />
 
-      <div>
-      <Header as="h2" className="watchlist-header">
-        Watch List
-      </Header>
-      </div>
+        <div>
+          <Header as="h2" className="watchlist-header">
+            Watch List
+          </Header>
+        </div>
 
-      <div>
-        <Card.Group className="watchlist-container">
-            {this.state.watchlist.map((content) => 
-            content.watched === false ? (
-              
+        <div>
+          <Card.Group className="watchlist-container">
+            {this.state.watchlist.map((content) =>
+              content.watched === false ? (
                 <WatchCard
                   key={content.id}
                   watchlist={content}
@@ -84,41 +83,43 @@ class ProfilePage extends Component {
                   falseWatch={this.falseWatch}
                   onChange={this.toggle}
                   checked={this.state.checked}
-                          {...this.props}
+                  {...this.props}
                 />
-              
-            ) : ("")
+              ) : (
+                ""
+              )
             )}
-        </Card.Group>
+          </Card.Group>
         </div>
 
         <Divider />
 
         <div>
-      <Header as="h2" className="watchlist-header">
-        Watched List
-      </Header>
-      </div>
+          <Header as="h2" className="watchlist-header">
+            Watched List
+          </Header>
+        </div>
 
-      <div>
-        <Card.Group>
-          {this.state.watchlist.map(content => 
-            content.watched === true ? (
-              <WatchCard
-              key={content.id}
-              watchlist={content}
-              deleteWatch={this.deleteWatchListItem}
-              trueWatch={this.trueWatch}
-              falseWatch={this.falseWatch}
-              onChange={this.toggle}
-              checked={this.state.checked}
+        <div>
+          <Card.Group>
+            {this.state.watchlist.map((content) =>
+              content.watched === true ? (
+                <WatchCard
+                  key={content.id}
+                  watchlist={content}
+                  deleteWatch={this.deleteWatchListItem}
+                  trueWatch={this.trueWatch}
+                  falseWatch={this.falseWatch}
+                  onChange={this.toggle}
+                  checked={this.state.checked}
                   {...this.props}
-              />
-              ) : ("")
+                />
+              ) : (
+                ""
+              )
             )}
-        </Card.Group>
-      </div>
-
+          </Card.Group>
+        </div>
       </>
     );
   }

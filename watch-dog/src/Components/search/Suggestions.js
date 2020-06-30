@@ -3,7 +3,7 @@ import React from 'react'
 const Suggestions = (props) => {
   const options = props.results.map(r => (
     <li key={r.id}>
-      {this.props.movie.name}
+      {r.name}
     </li>
   ))
   return <ul>{options}</ul>
