@@ -27,27 +27,6 @@
   ],
   "watchList": [
     {
-      "userId": "1",
-      "title": "Dark",
-      "url": "https://utellyassets9-1.imgix.net/api/Images/49cff0b580e7e308fdabde5fcf7c2e18/Redirect",
-      "watched": false,
-      "id": 7
-    },
-    {
-      "userId": "1",
-      "title": "Ocean's Eleven",
-      "url": "https://utellyassets9-1.imgix.net/api/Images/541a21c6e5852a44e30707a8193a0332/Redirect",
-      "watched": false,
-      "id": 8
-    },
-    {
-      "userId": "1",
-      "title": "Ocean's Twelve",
-      "url": "https://utellyassets9-1.imgix.net/api/Images/ea2a163da965e43b55be959ddb40cf92/Redirect",
-      "watched": false,
-      "id": 9
-    },
-    {
       "userId": "2",
       "title": "Alien",
       "url": "https://utellyassets9-1.imgix.net/api/Images/21123a38427c4587981c9fac7fb40ddd/Redirect",
@@ -81,6 +60,13 @@
       "url": "https://utellyassets9-1.imgix.net/api/Images/86edcf10234c355b225667525e712115/Redirect",
       "watched": true,
       "id": 14
+    },
+    {
+      "userId": "1",
+      "title": "Ozark",
+      "url": "https://utellyassets9-1.imgix.net/api/Images/a0a6b3554b4c732d72158acc234a5f4f/Redirect",
+      "watched": false,
+      "id": 15
     }
   ]
 }

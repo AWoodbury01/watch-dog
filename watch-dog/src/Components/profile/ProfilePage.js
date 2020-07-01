@@ -9,10 +9,15 @@ class ProfilePage extends Component {
     watchlist: [],
     editID: "",
     checked: false,
+    open: false
   };
 
   toggle = () =>
     this.setState((prevState) => ({ checked: !prevState.checked }));
+
+    open = () => this.setState({ open: true })
+    close = () => this.setState({ open: false })
+  
 
   trueWatch = (id) => {
     ContentManager.truePatch(id).then(() => {
@@ -84,6 +89,9 @@ class ProfilePage extends Component {
                   falseWatch={this.falseWatch}
                   onChange={this.toggle}
                   checked={this.state.checked}
+                  onOpen={this.state.open}
+                  open={this.open}
+                  close={this.close}
                   {...this.props}
                 />
               ) : (
@@ -113,6 +121,9 @@ class ProfilePage extends Component {
                   falseWatch={this.falseWatch}
                   onChange={this.toggle}
                   checked={this.state.checked}
+                  onOpen={this.state.open}
+                  open={this.open}
+                  close={this.close}
                   {...this.props}
                 />
               ) : (
@@ -127,3 +138,5 @@ class ProfilePage extends Component {
 }
 
 export default ProfilePage;
+
+// () => this.props.deleteWatch(this.props.watchlist.id)
