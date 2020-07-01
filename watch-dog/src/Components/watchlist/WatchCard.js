@@ -12,7 +12,7 @@ class WatchCard extends Component {
     return (
         <Card className="watchcard">
         <Image
-          src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
+          src={this.props.watchlist.url}
           wrapped
           ui={false}
         />

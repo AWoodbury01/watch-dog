@@ -44,6 +44,7 @@ class ProfilePage extends Component {
     });
   };
 
+
   componentDidMount() {
     ContentManager.getAllWatchList().then((watchListItems) => {
       this.setState({
@@ -71,7 +72,7 @@ class ProfilePage extends Component {
           </Header>
         </div>
 
-        <div>
+        <div className="watchlist-parent">
           <Card.Group className="watchlist-container">
             {this.state.watchlist.map((content) =>
               content.watched === false ? (
@@ -100,8 +101,8 @@ class ProfilePage extends Component {
           </Header>
         </div>
 
-        <div>
-          <Card.Group>
+        <div className="watchlist-parent">
+          <Card.Group className="watchlist-container">
             {this.state.watchlist.map((content) =>
               content.watched === true ? (
                 <WatchCard

@@ -32,6 +32,15 @@ export default {
       },
     }).then((result) => result.json());
   },
+  postWatchListItem(newContent) {
+    return fetch(`${remoteURL}/watchList`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newContent),
+    }).then((data) => data.json())
+},
 
   getAll() {
     return fetch(`${externalURL}/lookup?term=bojack`, {
