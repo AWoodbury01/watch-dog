@@ -22,3 +22,18 @@
     display: flex;
     align-items: center;
 }
+
+.extra-card-contents {
+    display: flex;
+}
+
+.checkbox-container {
+    width: 50%;
+    margin-left: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.card-btns-container {
+    width: 50%;
+}

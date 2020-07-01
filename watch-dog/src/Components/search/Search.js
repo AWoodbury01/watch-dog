@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Form, Modal, Image, Header, Button } from "semantic-ui-react";
+import { Form, Modal, Image,  Button, Card, Icon } from "semantic-ui-react";
 import ContentManager from "../../modules/ContentManager";
-import Suggestions from "../search/Suggestions";
 import axios from "axios";
 import API_KEY from "../../APIKey";
 
@@ -10,15 +9,6 @@ class Search extends Component {
     query: "",
     results: [],
   };
-
-  //  getInfo = () =>{
-  //      axios.get(`https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com?api_key=${API_KEY}/lookup?term=${this.state.query}`)
-  //      .then(({data}) => {
-  //          this.setState({
-  //              results: data.data
-  //          })
-  //      })
-  //  }
 
   getInfo = () => {
     axios
@@ -48,12 +38,6 @@ class Search extends Component {
     });
   };
 
-  //  handleInputChange = () => {
-  //     this.setState({
-  //       query: this.search.value
-  //     })
-  //   }
-
   handleInputChange = () => {
     this.setState(
       {
@@ -69,6 +53,7 @@ class Search extends Component {
       }
     );
   };
+
   render() {
     return (
       <>
@@ -83,10 +68,25 @@ class Search extends Component {
           ""
         ) : (
           <Modal trigger={<Button>Search</Button>}>
-            <Modal.Header>Select a Photo</Modal.Header>
-            <Modal.Content>
+            <Modal.Header>Search Results</Modal.Header>
+            <Modal.Content scrolling>
               {this.state.results.map(r => (
-              <li key={r.id}>{r.name}</li>))}
+              <Card className="movie-card">
+              <Image src={r.picture} wrapped ui={false} />
+              <Card.Content>
+                <Card.Header>{r.name}</Card.Header>
+              </Card.Content>
+              <Card.Content extra>
+                <a href={r.external_ids.imdb.url}>
+                  <Icon name="imdb" />
+                  IMDb
+                </a>
+                <a>
+                  {r.external_ids.rotten_tomatoes}
+                </a>
+              </Card.Content>
+            </Card>
+      ))}
             </Modal.Content>
           </Modal>
         )}

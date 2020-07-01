@@ -2,10 +2,15 @@ import React, { Component } from "react";
 import { Card, Icon, Image, Button, Checkbox } from "semantic-ui-react";
 import "../profile/Profile.css";
 
+
+
 class WatchCard extends Component {
+
+
+  
   render() {
     return (
-      <Card className="watchcard">
+        <Card className="watchcard">
         <Image
           src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
           wrapped
@@ -18,6 +23,8 @@ class WatchCard extends Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
+          <div className="extra-card-contents">
+          <div className="card-btns-container">
           <Button.Group>
           <Button 
           animated="vertical"
@@ -39,6 +46,9 @@ class WatchCard extends Component {
             </Button.Content>
           </Button>
           </Button.Group>
+          </div>
+
+          <div className="checkbox-container">
           <Checkbox slider 
           checked={this.props.watchlist.watched === true ? true : false}
           label="Watched"
@@ -49,6 +59,8 @@ class WatchCard extends Component {
           (this.props.trueWatch(this.props.watchlist.id))
           }
           />
+          </div>
+          </div>
         </Card.Content>
       </Card>
     );
