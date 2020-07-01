@@ -1,13 +1,22 @@
 import React, { Component } from "react";
-import { Form, Modal, Image,  Button, Card, Icon } from "semantic-ui-react";
+import {
+  Form,
+  Modal,
+  Image,
+  Button,
+  Card,
+  Icon,
+  Label,
+} from "semantic-ui-react";
 import ContentManager from "../../modules/ContentManager";
 import axios from "axios";
 import API_KEY from "../../APIKey";
+import "../profile/Profile.css";
 
 class Search extends Component {
   state = {
     query: "",
-    results: [],
+    results: []
   };
 
   getInfo = () => {
@@ -38,6 +47,24 @@ class Search extends Component {
     });
   };
 
+  addWatchListItem = (newContent) => {
+    ContentManager.postWatchListItem(newContent).then(() => {
+      ContentManager.getAllWatchList();
+    });
+  };
+
+  createNewWatchListItem = (results) => {
+    const newlyCreatedWatchListItem = {
+      userId: localStorage.getItem("userId"),
+      title: results.name,
+      url: results.picture,
+      watched: false,
+    };
+    this.addWatchListItem(newlyCreatedWatchListItem);
+    }
+
+  
+
   handleInputChange = () => {
     this.setState(
       {
@@ -67,26 +94,36 @@ class Search extends Component {
         {this.state.query === "" ? (
           ""
         ) : (
-          <Modal trigger={<Button>Search</Button>}>
+          <Modal small trigger={<Button>Search</Button>}>
             <Modal.Header>Search Results</Modal.Header>
             <Modal.Content scrolling>
-              {this.state.results.map(r => (
-              <Card className="movie-card">
-              <Image src={r.picture} wrapped ui={false} />
-              <Card.Content>
-                <Card.Header>{r.name}</Card.Header>
-              </Card.Content>
-              <Card.Content extra>
-                <a href={r.external_ids.imdb.url}>
-                  <Icon name="imdb" />
-                  IMDb
-                </a>
-                <a>
-                  {r.external_ids.rotten_tomatoes}
-                </a>
-              </Card.Content>
-            </Card>
-      ))}
+              {this.state.results.map((r) => (
+                <Card className="movie-card" key={r.id}>
+                  <Image src={r.picture} wrapped ui={false} />
+                  <Card.Content>
+                    <Card.Header>{r.name}</Card.Header>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <div className="searchcard-btns">
+                      <div className="imdb-btn">
+                        <Label href={r.external_ids.imdb.url} target="_blank">
+                          <Icon name="imdb" />
+                          IMDb
+                        </Label>
+                      </div>
+                      <div className="add-to-watchlist-btn">
+                        <Label
+                          as="a"
+                          onClick={() => this.createNewWatchListItem(r)}
+                            
+                        >
+                          <Icon name="plus" /> Add to Watchlist
+                        </Label>
+                      </div>
+                    </div>
+                  </Card.Content>
+                </Card>
+              ))}
             </Modal.Content>
           </Modal>
         )}

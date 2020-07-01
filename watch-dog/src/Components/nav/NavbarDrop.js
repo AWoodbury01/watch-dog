@@ -5,7 +5,7 @@ const options = [
   {
     key: "edit",
     icon: "user circle",
-    text: "My Account",
+    text: "Profile",
     value: "edit",
     href: "/profile"
 
