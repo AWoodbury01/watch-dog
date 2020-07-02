@@ -41,6 +41,15 @@ export default {
         body: JSON.stringify(newContent),
     }).then((data) => data.json())
 },
+updateReview(editedReview, id) {
+  return fetch(`${remoteURL}/watchList/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(editedReview)
+  }).then(data => data.json());
+},
 
   getAll() {
     return fetch(`${externalURL}/lookup?term=bojack`, {

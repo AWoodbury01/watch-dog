@@ -58,6 +58,7 @@ class Search extends Component {
       userId: localStorage.getItem("userId"),
       title: results.name,
       url: results.picture,
+      review: "",
       watched: false,
     };
     this.addWatchListItem(newlyCreatedWatchListItem);
@@ -94,7 +95,9 @@ class Search extends Component {
         {this.state.query === "" ? (
           ""
         ) : (
-          <Modal small trigger={<Button>Search</Button>}>
+          <Modal small trigger={<Button>Search</Button>}
+          closeIcon
+          >
             <Modal.Header>Search Results</Modal.Header>
             <Modal.Content scrolling>
               {this.state.results.map((r) => (

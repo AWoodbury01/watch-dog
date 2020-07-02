@@ -3,21 +3,48 @@ import { Header, Icon, Card, Divider } from "semantic-ui-react";
 import WatchCard from "../watchlist/WatchCard";
 import ContentManager from "../../modules/ContentManager";
 import "./Profile.css";
+import WatchEditForm from "../watchlist/WatchEditForm";
 
 class ProfilePage extends Component {
   state = {
     watchlist: [],
-    editID: "",
+    editId: "",
     checked: false,
-    open: false
+    open: false,
+    loadingStatus: false,
   };
 
   toggle = () =>
     this.setState((prevState) => ({ checked: !prevState.checked }));
 
-    open = () => this.setState({ open: true })
-    close = () => this.setState({ open: false })
-  
+  open = () => this.setState({ open: true });
+  close = () => this.setState({ open: false });
+
+  handleEditId = (idToEdit) => {
+    this.setState({ editId: idToEdit });
+  };
+
+  updateUserId = () => {
+    ContentManager.getCurrentUser(localStorage.getItem("userId")).then(
+      (userId) => {
+        this.setState({
+          userId: userId,
+        });
+      }
+    );
+  };
+
+  updateExistingReview = (editedReview, id) => {
+    this.setState({ loadingStatus: true });
+    ContentManager.updateReview(editedReview, id).then(() => {
+      ContentManager.getAllWatchList().then((newWatchlist) => {
+        this.setState({
+          watchlist: newWatchlist,
+          editId: "",
+        });
+      });
+    });
+  };
 
   trueWatch = (id) => {
     ContentManager.truePatch(id).then(() => {
@@ -48,7 +75,6 @@ class ProfilePage extends Component {
       });
     });
   };
-
 
   componentDidMount() {
     ContentManager.getAllWatchList().then((watchListItems) => {
@@ -92,10 +118,19 @@ class ProfilePage extends Component {
                   onOpen={this.state.open}
                   open={this.open}
                   close={this.close}
+                  handleUpdate={this.updateExistingReview}
+                  handleEditId={this.handleEditId}
                   {...this.props}
                 />
               ) : (
                 ""
+                
+                // <WatchEditForm
+                //   key={content.id}
+                //   watchlist={content}
+                //   handleEditId={this.handleEditId}
+                //   handleUpdate={this.updateExistingReview}
+                // />
               )
             )}
           </Card.Group>
@@ -124,6 +159,8 @@ class ProfilePage extends Component {
                   onOpen={this.state.open}
                   open={this.open}
                   close={this.close}
+                  handleUpdate={this.updateExistingReview}
+                  handleEditId={this.handleEditId}
                   {...this.props}
                 />
               ) : (
@@ -138,5 +175,3 @@ class ProfilePage extends Component {
 }
 
 export default ProfilePage;
-
-// () => this.props.deleteWatch(this.props.watchlist.id)
