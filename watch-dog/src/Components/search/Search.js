@@ -12,11 +12,13 @@ import ContentManager from "../../modules/ContentManager";
 import axios from "axios";
 import API_KEY from "../../APIKey";
 import "../profile/Profile.css";
+import ProfilePage from "../profile/ProfilePage"
 
 class Search extends Component {
   state = {
     query: "",
-    results: []
+    results: [],
+    loadingStatus: false
   };
 
   getInfo = () => {
@@ -62,9 +64,8 @@ class Search extends Component {
       watched: false,
     };
     this.addWatchListItem(newlyCreatedWatchListItem);
+    this.setState({loadingStatus: true})
     }
-
-  
 
   handleInputChange = () => {
     this.setState(
@@ -96,7 +97,7 @@ class Search extends Component {
           ""
         ) : (
           <Modal small trigger={<Button>Search</Button>}
-          closeIcon
+          closeIcon closeOnDocumentClick="true"
           >
             <Modal.Header>Search Results</Modal.Header>
             <Modal.Content scrolling>
@@ -118,7 +119,6 @@ class Search extends Component {
                         <Label
                           as="a"
                           onClick={() => this.createNewWatchListItem(r)}
-                            
                         >
                           <Icon name="plus" /> Add to Watchlist
                         </Label>

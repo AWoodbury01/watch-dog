@@ -45,7 +45,7 @@ class MoviesList extends Component {
 
         <Divider />
 
-        <Card.Group className="watchlist-container">
+        {/* <Card.Group className="watchlist-container">
             {this.state.movies.map((content) => {
               return (
                 <MovieCard
@@ -55,7 +55,7 @@ class MoviesList extends Component {
                 />
               )
             })}
-        </Card.Group>
+        </Card.Group> */}
       </>
     )
   }

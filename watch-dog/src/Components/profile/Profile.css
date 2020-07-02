@@ -55,3 +55,23 @@
     align-items: center;
 }
 
+/* Home page */
+.main-header {
+    font-size: 4em;
+    font-weight: normal;
+
+}
+
+.sub-header {
+    font-size: 1.7em;
+    font-weight: normal;
+    margin-top: 1.5em;
+}
+
+.splash-background {
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+

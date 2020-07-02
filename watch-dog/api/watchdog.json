@@ -78,9 +78,17 @@
       "id": 22,
       "title": "The Wolf Of Wall Street",
       "url": "https://utellyassets9-1.imgix.net/api/Images/8431457447b2bb1c4816582181da9be4/Redirect",
-      "review": "Excellent!",
+      "review": "What a long movie",
       "watched": false,
       "userId": "1"
+    },
+    {
+      "userId": "1",
+      "title": "Ozark",
+      "url": "https://utellyassets9-1.imgix.net/api/Images/a0a6b3554b4c732d72158acc234a5f4f/Redirect",
+      "review": "",
+      "watched": true,
+      "id": 24
     }
   ]
 }

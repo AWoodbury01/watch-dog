@@ -12,17 +12,16 @@ import {
   TextArea,
 } from "semantic-ui-react";
 import "../profile/Profile.css";
-import ContentManager from "../../modules/ContentManager";
 
 class WatchCard extends Component {
   state = {
     reviewText: this.props.watchlist.review,
-    loadingStatus: true,
+    loadingStatus: false,
     modalOpen: false
   };
 
   handleOpen = () => this.setState({ modalOpen: true })
-  handleClose = () => this.setState({ modalOpen: false })
+  handleClose = () => this.setState({ modalOpen: false, loadingStatus: true })
 
 
   handleEditFieldChange = (evt) => {
@@ -66,9 +65,9 @@ class WatchCard extends Component {
                   size="tiny"
                   trigger={
                     <Button animated="vertical" color="teal" onClick={this.handleOpen}>
-                      <Button.Content hidden>Edit</Button.Content>
+                      <Button.Content hidden>Review</Button.Content>
                       <Button.Content visible>
-                        <Icon name="edit outline" />
+                        <Icon name="file text" />
                       </Button.Content>
                     </Button>
                   }
@@ -103,7 +102,7 @@ class WatchCard extends Component {
                           <Icon name="cancel" />
                         </Button.Content>
                       </Button>
-                      <Button animated="vertical" color="teal" onClick={() => this.makeEditedReview()}>
+                      <Button animated="vertical" color="green" onClick={() => this.makeEditedReview()}>
                         <Button.Content hidden>Save</Button.Content>
                         <Button.Content visible>
                           <Icon name="save" />
@@ -141,7 +140,6 @@ class WatchCard extends Component {
             <div className="checkbox-container">
               <Checkbox
                 slider
-                checked={this.props.watchlist.watched === true ? true : false}
                 label="Watched"
                 id={this.props.watchlist.id}
                 onClick={() =>
