@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "./nav/Navbar";
 import ApplicationViews from "./ApplicationViews";
+import "../Components/profile/Profile.css";
 
 class WatchDog extends Component {
   state = {
@@ -13,7 +14,7 @@ class WatchDog extends Component {
     return (
       <>
         <Navbar />
-        <ApplicationViews />
+          <ApplicationViews />
       </>
     );
   }

@@ -3,7 +3,6 @@ import { Header, Icon, Card, Divider } from "semantic-ui-react";
 import WatchCard from "../watchlist/WatchCard";
 import ContentManager from "../../modules/ContentManager";
 import "./Profile.css";
-import WatchEditForm from "../watchlist/WatchEditForm";
 
 class ProfilePage extends Component {
   state = {
@@ -23,6 +22,8 @@ class ProfilePage extends Component {
   handleEditId = (idToEdit) => {
     this.setState({ editId: idToEdit });
   };
+
+
 
   updateUserId = () => {
     ContentManager.getCurrentUser(localStorage.getItem("userId")).then(
@@ -80,6 +81,7 @@ class ProfilePage extends Component {
     ContentManager.getAllWatchList().then((watchListItems) => {
       this.setState({
         watchlist: watchListItems,
+        loadingStatus: true
       });
     });
   }

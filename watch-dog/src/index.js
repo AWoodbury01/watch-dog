@@ -5,12 +5,13 @@ import WatchDog from '../src/Components/WatchDog';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
+import "../src/Components/profile/Profile.css"
 
 
 ReactDOM.render(
   <Router>
     <WatchDog />
-  </Router>,
+    </Router>,
   document.getElementById('root')
 );
 

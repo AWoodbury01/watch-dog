@@ -19,7 +19,7 @@ export default class Navbar extends Component {
           active={activeItem === "home"}
           onClick={this.handleItemClick}
         />
-        <Menu.Item
+        {/* <Menu.Item
           name="Movies"
           href="/movies"
           active={activeItem === "Movies"}
@@ -30,7 +30,7 @@ export default class Navbar extends Component {
           href="/shows"
           active={activeItem === "TV Shows"}
           onClick={this.handleItemClick}
-        />
+        /> */}
         <Menu.Menu position="right">
           <Menu.Item>
             {/* <Input icon="search" placeholder="Search..." /> */}
