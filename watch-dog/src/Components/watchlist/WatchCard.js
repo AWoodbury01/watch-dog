@@ -10,6 +10,7 @@ import {
   Header,
   Form,
   TextArea,
+  Label,
 } from "semantic-ui-react";
 import "../profile/Profile.css";
 
@@ -17,12 +18,15 @@ class WatchCard extends Component {
   state = {
     reviewText: this.props.watchlist.review,
     loadingStatus: false,
-    modalOpen: false
+    modalOpen: false,
+    open: false,
   };
 
-  handleOpen = () => this.setState({ modalOpen: true })
-  handleClose = () => this.setState({ modalOpen: false, loadingStatus: true })
+  handleOpen = () => this.setState({ modalOpen: true });
+  handleClose = () => this.setState({ modalOpen: false, loadingStatus: true });
 
+  open = () => this.setState({ open: true });
+  close = () => this.setState({ open: false });
 
   handleEditFieldChange = (evt) => {
     const stateToChange = {};
@@ -37,7 +41,9 @@ class WatchCard extends Component {
       url: this.props.watchlist.url,
       review: this.state.reviewText,
       watched: this.props.watchlist.watched,
-      userId: localStorage.getItem("userId")
+      userId: localStorage.getItem("userId"),
+      imdb: this.props.watchlist.imdb,
+      wiki: this.props.watchlist.wiki
     };
 
     this.props.handleUpdate(editedReview, this.props.watchlist.id);
@@ -45,26 +51,48 @@ class WatchCard extends Component {
 
   refreshAfterDelete = (id) => {
     this.props.deleteWatch(id);
+    this.setState({ loadingStatus: true });
   };
 
   render() {
     return (
-      <Card className="watchcard">
+      <Card raised className="watchcard">
         <Image src={this.props.watchlist.url} wrapped ui={false} />
         <Card.Content>
-          <Card.Header>{this.props.watchlist.title}</Card.Header>
-          <Card.Description>My Review:</Card.Description>
+          <Card.Header className="watchcard-title">
+            {this.props.watchlist.title}
+          </Card.Header>
+          <Card.Description>
+            <div className="searchcard-btns watchcard-icons">
+              <div className="imdb-btn">
+                <Label color="grey" href={this.props.watchlist.imdb} target="_blank">
+                  <Icon name="imdb" size="small"/>
+                  IMDb
+                </Label>
+              </div>{" "}
+              <div className="wiki-btn">
+                        <Label color="grey" href={this.props.watchlist.wiki} target="_blank">
+                          <Icon name="wikipedia w" />
+                          WikiData
+                        </Label>
+                      </div>
+            </div>{" "}
+          </Card.Description>
         </Card.Content>
         <Card.Content extra>
           <div className="extra-card-contents">
             <div className="card-btns-container">
               <Button.Group>
                 <Modal
-                open={this.state.modalOpen}
-                onClose={this.handleClose}
+                  open={this.state.modalOpen}
+                  onClose={this.handleClose}
                   size="tiny"
                   trigger={
-                    <Button animated="vertical" color="teal" onClick={this.handleOpen}>
+                    <Button
+                      animated="vertical"
+                      color="teal"
+                      onClick={this.handleOpen}
+                    >
                       <Button.Content hidden>Review</Button.Content>
                       <Button.Content visible>
                         <Icon name="file text" />
@@ -84,8 +112,9 @@ class WatchCard extends Component {
                       <Header>My Review</Header>
                       <Form>
                         <TextArea
-                        id="reviewText"
-                        required onChange={this.handleEditFieldChange}
+                          id="reviewText"
+                          required
+                          onChange={this.handleEditFieldChange}
                           rows="6"
                           placeholder="Write your review here"
                           value={this.state.reviewText}
@@ -93,48 +122,50 @@ class WatchCard extends Component {
                       </Form>
                     </Modal.Description>
                   </Modal.Content>
-                  <Modal.Actions
-                  >
+                  <Modal.Actions>
                     <Button.Group fluid>
-                      <Button animated="vertical" color="grey" onClick={this.handleClose}>
+                      <Button
+                        animated="vertical"
+                        color="grey"
+                        onClick={this.handleClose}
+                      >
                         <Button.Content hidden>Cancel</Button.Content>
                         <Button.Content visible>
                           <Icon name="cancel" />
                         </Button.Content>
                       </Button>
-                      <Button animated="vertical" color="green" onClick={() => this.makeEditedReview()}>
+                      <Button
+                        animated="vertical"
+                        color="green"
+                        open={this.state.open}
+                        onCancel={this.close}
+                                onClick={() => this.makeEditedReview()}
+                      >
                         <Button.Content hidden>Save</Button.Content>
                         <Button.Content visible>
                           <Icon name="save" />
                         </Button.Content>
                       </Button>
-
                     </Button.Group>
                   </Modal.Actions>
                 </Modal>
 
-                <Button
-                  animated="vertical"
-                  color="red"
-                  onClick={() =>
-                    this.refreshAfterDelete(this.props.watchlist.id)
-                  }
-                >
+                <Button animated="vertical" color="red" onClick={this.open}>
                   <Button.Content hidden>Delete</Button.Content>
                   <Button.Content visible>
                     <Icon name="trash alternate outline" />
                   </Button.Content>
                 </Button>
               </Button.Group>
-              {/* <Confirm
+              <Confirm
                 size="tiny"
                 confirmButton="Delete"
-                open={this.props.onOpen}
-                onCancel={this.props.close}
+                open={this.state.open}
+                onCancel={this.close}
                 onConfirm={() =>
                   this.refreshAfterDelete(this.props.watchlist.id)
                 }
-              /> */}
+              />
             </div>
 
             <div className="checkbox-container">
@@ -142,6 +173,7 @@ class WatchCard extends Component {
                 slider
                 label="Watched"
                 id={this.props.watchlist.id}
+                checked={this.props.watchlist.watched === true ? true : false}
                 onClick={() =>
                   this.props.watchlist.watched === true
                     ? this.props.falseWatch(this.props.watchlist.id)

@@ -126,13 +126,6 @@ class ProfilePage extends Component {
                 />
               ) : (
                 ""
-                
-                // <WatchEditForm
-                //   key={content.id}
-                //   watchlist={content}
-                //   handleEditId={this.handleEditId}
-                //   handleUpdate={this.updateExistingReview}
-                // />
               )
             )}
           </Card.Group>
