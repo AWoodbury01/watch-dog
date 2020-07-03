@@ -12,7 +12,6 @@ import ContentManager from "../../modules/ContentManager";
 import axios from "axios";
 import API_KEY from "../../APIKey";
 import "../profile/Profile.css";
-import ProfilePage from "../profile/ProfilePage"
 
 class Search extends Component {
   state = {
@@ -62,6 +61,8 @@ class Search extends Component {
       url: results.picture,
       review: "",
       watched: false,
+      imdb: results.external_ids.imdb.url,
+      wiki: results.external_ids.wiki_data.url
     };
     this.addWatchListItem(newlyCreatedWatchListItem);
     this.setState({loadingStatus: true})
@@ -96,8 +97,8 @@ class Search extends Component {
         {this.state.query === "" ? (
           ""
         ) : (
-          <Modal small trigger={<Button>Search</Button>}
-          closeIcon closeOnDocumentClick="true"
+          <Modal closeOnDocumentClick="true" small trigger={<Button>Search</Button>}
+          closeIcon 
           >
             <Modal.Header>Search Results</Modal.Header>
             <Modal.Content scrolling>
@@ -110,13 +111,15 @@ class Search extends Component {
                   <Card.Content extra>
                     <div className="searchcard-btns">
                       <div className="imdb-btn">
-                        <Label href={r.external_ids.imdb.url} target="_blank">
+                        <Label                         color="grey"
+ href={r.external_ids.imdb.url} target="_blank">
                           <Icon name="imdb" />
                           IMDb
                         </Label>
                       </div>
                       <div className="add-to-watchlist-btn">
                         <Label
+                        color="green"
                           as="a"
                           onClick={() => this.createNewWatchListItem(r)}
                         >

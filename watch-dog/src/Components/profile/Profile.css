@@ -44,6 +44,11 @@
     width: 50%;
 }
 
+.watchcard-icons{
+    display: flex;
+    align-items: center;
+}
+
 /* Search Cards */
 .searchcard-btns{
     display: flex;

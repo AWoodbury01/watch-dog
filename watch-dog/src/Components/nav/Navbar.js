@@ -33,7 +33,6 @@ export default class Navbar extends Component {
         /> */}
         <Menu.Menu position="right">
           <Menu.Item>
-            {/* <Input icon="search" placeholder="Search..." /> */}
             <Search />
           </Menu.Item>
         <Menu.Item>
