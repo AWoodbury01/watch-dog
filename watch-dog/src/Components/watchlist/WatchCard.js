@@ -71,11 +71,11 @@ class WatchCard extends Component {
                 </Label>
               </div>{" "}
               <div className="wiki-btn">
-                        <Label color="grey" href={this.props.watchlist.wiki} target="_blank">
-                          <Icon name="wikipedia w" />
-                          WikiData
-                        </Label>
-                      </div>
+                <Label color="grey" href={this.props.watchlist.wiki} target="_blank">
+                  <Icon name="wikipedia w" />
+                  WikiData
+                </Label>
+            </div>
             </div>{" "}
           </Card.Description>
         </Card.Content>

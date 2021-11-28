@@ -102,7 +102,8 @@ class Search extends Component {
           >
             <Modal.Header>Search Results</Modal.Header>
             <Modal.Content scrolling>
-              {this.state.results.map((r) => (
+              {/* {this.state.results.map((r) => (
+                // Sample Card 1
                 <Card className="movie-card" key={r.id}>
                   <Image src={r.picture} wrapped ui={false} />
                   <Card.Content>
@@ -111,8 +112,9 @@ class Search extends Component {
                   <Card.Content extra>
                     <div className="searchcard-btns">
                       <div className="imdb-btn">
-                        <Label                         color="grey"
- href={r.external_ids.imdb.url} target="_blank">
+                        <Label
+                          color="grey"
+                          href={r.external_ids.imdb.url} target="_blank">
                           <Icon name="imdb" />
                           IMDb
                         </Label>
@@ -129,7 +131,95 @@ class Search extends Component {
                     </div>
                   </Card.Content>
                 </Card>
-              ))}
+              ))} */}
+              {/* Sample Card 1 */}
+                <Card className="movie-card" >
+                  <Image src="/oceanseleven.jpg" wrapped ui={false} />
+                  <Card.Content>
+                    <Card.Header>Ocean's Eleven</Card.Header>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <div className="searchcard-btns">
+                      <div className="imdb-btn">
+                        <Label
+                          color="grey"
+                          href="https://www.imdb.com/title/tt0240772/" target="_blank">
+                          <Icon name="imdb" />
+                          IMDb
+                        </Label>
+                      </div>
+                      <div className="add-to-watchlist-btn">
+                        <Label
+                        color="green"
+                          as="a"
+                          // TODO: Hard coded results. Make this button work
+                          // onClick={() => this.createNewWatchListItem(r)}
+                        >
+                          <Icon name="plus" /> Add to Watchlist
+                        </Label>
+                      </div>
+                    </div>
+                  </Card.Content>
+                </Card>
+              {/* Sample Card 2 */}
+                <Card className="movie-card" >
+                  <Image src="/oceanstwelve.jpeg" wrapped ui={false} />
+                  <Card.Content>
+                    <Card.Header>Ocean's Twelve</Card.Header>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <div className="searchcard-btns">
+                      <div className="imdb-btn">
+                        <Label
+                          color="grey"
+                          href="https://www.imdb.com/title/tt0349903/?ref_=nv_sr_srsg_0" target="_blank">
+                          <Icon name="imdb" />
+                          IMDb
+                        </Label>
+                      </div>
+                      <div className="add-to-watchlist-btn">
+                        <Label
+                        color="green"
+                          as="a"
+                          // TODO: Hard coded results. Make this button work
+                          // onClick={() => this.createNewWatchListItem(r)}
+                        >
+                          <Icon name="plus" /> Add to Watchlist
+                        </Label>
+                      </div>
+                    </div>
+                  </Card.Content>
+                </Card>
+              {/* Sample Card 3 */}
+                <Card className="movie-card" >
+                  <Image src="/oceansthirteen.png" wrapped ui={false} />
+                  <Card.Content>
+                    <Card.Header>Ocean's Thirteen</Card.Header>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <div className="searchcard-btns">
+                      <div className="imdb-btn">
+                        <Label
+                          color="grey"
+                          href="https://www.imdb.com/title/tt0496806/?ref_=nv_sr_srsg_0" target="_blank">
+                          <Icon name="imdb" />
+                          IMDb
+                        </Label>
+                      </div>
+                      <div className="add-to-watchlist-btn">
+                        <Label
+                        color="green"
+                          as="a"
+                          // TODO: Hard coded results. Make this button work
+                          // onClick={() => this.createNewWatchListItem(r)}
+                        >
+                          <Icon name="plus" /> Add to Watchlist
+                        </Label>
+                      </div>
+                    </div>
+                  </Card.Content>
+                </Card>
+
             </Modal.Content>
           </Modal>
         )}
